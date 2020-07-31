@@ -324,7 +324,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DatabaseErrorResponse'
 
-  /store-access/{userId}/{qrText}:
+  /store-access/{mobileUserId}/{qrText}:
     get:
       summary: Store access
       description: Checks if one user can access to store
@@ -333,7 +333,7 @@ paths:
       operationId: getStoreAccess
       parameters:
         - in: path
-          name: userId
+          name: mobileUserId
           schema:
             type: string
           required: true

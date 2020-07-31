@@ -5,6 +5,7 @@ import { RegisterModule } from './register/register.module';
 import { QuarantinedModule } from './quarantined/quarantined.module';
 import { LabAnalysisModule } from './lab-analysis/lab-analysis.module';
 import { StoreModule } from './store/store.module';
+import { StoreAccessModule } from './store-access/store-access.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { StoreModule } from './store/store.module';
     QuarantinedModule,
     LabAnalysisModule,
     StoreModule,
+    StoreAccessModule,
   ],
 })
 export class AppModule {}
