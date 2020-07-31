@@ -24,7 +24,7 @@ const MobileUserSchema: Schema = new Schema(
       trim: true,
     },
     isQuarantined: {
-      type: String,
+      type: Boolean,
       required: true
     },
     createdAt: {

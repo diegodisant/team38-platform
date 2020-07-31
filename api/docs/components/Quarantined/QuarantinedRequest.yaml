@@ -3,12 +3,8 @@ QuarantinedRequest:
     - mobileUserId
     - isQuarantined
   properties:
-    mobileUserId:
-      type: string
-      description: Mongo unique document identifier
     isQuarantined:
       type: bool
       description: Marks if the user needs to be quarantined
   example:
-    mobileUserId: '21f341cf4ecd-1596004085649'
     isQuarantined: true

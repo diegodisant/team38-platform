@@ -3,6 +3,7 @@ import { RegisterValidator } from './register.validator';
 import { IMobileUserModel } from './model/IMobileUserModel';
 import MobileUserModel from './model/MobileUserModel';
 import { DatabaseErrorTransformer } from 'src/core/transformer/exception/DatabaseErrorTransformer';
+import { UntypedObject } from 'src/core/types/UntypedObject';
 
 @Injectable()
 export class RegisterService {

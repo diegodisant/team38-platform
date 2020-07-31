@@ -4,6 +4,7 @@ import { AuthValidator } from './auth.validator';
 import UserModel from 'src/user/model/UserModel';
 import * as jwt from 'jsonwebtoken';
 import config from 'src/core/config/env/EnvConfiguration';
+import { DatabaseErrorTransformer } from 'src/core/transformer/exception/DatabaseErrorTransformer';
 
 @Injectable()
 export class AuthService {
@@ -21,8 +22,14 @@ export class AuthService {
         `User with email: ${userValidated.email} already exists and cannot be registered`
       );
     }
+    
+    let userSaved: IUserModel;
 
-    const userSaved: IUserModel = await userToSave.save();
+    try {
+      userSaved = await userToSave.save();
+    } catch(error) {
+      throw DatabaseErrorTransformer.fromError(error);
+    }
 
     return userSaved;
   }
