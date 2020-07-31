@@ -6,6 +6,7 @@ import { QuarantinedModule } from './quarantined/quarantined.module';
 import { LabAnalysisModule } from './lab-analysis/lab-analysis.module';
 import { StoreModule } from './store/store.module';
 import { StoreAccessModule } from './store-access/store-access.module';
+import { QuizModule } from './quiz/quiz.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { StoreAccessModule } from './store-access/store-access.module';
     LabAnalysisModule,
     StoreModule,
     StoreAccessModule,
+    QuizModule,
   ],
 })
 export class AppModule {}
