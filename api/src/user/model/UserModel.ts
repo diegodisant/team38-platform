@@ -1,6 +1,5 @@
 import * as connection from 'src/core/config/database/MongoConnection';
 import * as bcrypt from 'bcrypt';
-import * as crypto from 'crypto';
 import { Schema } from 'mongoose';
 import { NextFunction } from 'express';
 import { IUserModel } from './IUserModel';

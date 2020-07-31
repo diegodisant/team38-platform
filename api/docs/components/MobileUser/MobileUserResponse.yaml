@@ -6,7 +6,7 @@ MobileUserResponse:
     curp:
       type: string
       description: Unique population register identifier
-    birthdate:
+    birthDate:
       type: date
       description: Birth date
     gender:
