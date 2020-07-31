@@ -1,9 +1,4 @@
 QuizResponse:
-  required:
-    - _id
-    - userId
-    - questionNumber
-    - answer
   properties:
     _id:
       type: string
