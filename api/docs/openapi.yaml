@@ -1,0 +1,526 @@
+openapi: '3.0.0'
+tags:
+  - name: Guarde API
+    description: Core API endpoints
+servers: []
+info:
+  version: '1.0'
+  title: Guarde API
+  description: 'API for mobile application and platform used in team 38 solution'
+  contact:
+    name: Diego De Santiago
+    url: 'https://github.com/diegodisant'
+    email: diegodisan@protonmail.com
+  license:
+    name: MIT
+    url: 'https://github.com/diegodisant/team38-platform'
+paths:
+  /auth:
+    post:
+      summary: Authentication
+      description: Allows user to authenticate with API
+      tags:
+        - api
+      operationId: authUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRequest'
+      responses:
+        '200':
+          description: Auth successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSuccessResponse'
+        '403':
+          description: Auth error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthErrorResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+
+  /user:
+    post:
+      summary: User register
+      description: Sign up a new user for platform
+      tags:
+        - api
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: 'User created successfully'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+
+  /register:
+    post:
+      summary: Mobile user register
+      description: Register a mobile device user
+      tags:
+        - api
+      operationId: createMobileUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MobileUserRequest'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MobileUserResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+
+  /quarantined:
+    post:
+      summary: Quarantined change
+      description: Marks if the user needs to be quarantined
+      tags:
+        - api
+      operationId: changeQuarantinedStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuarantinedRequest'
+      responses:
+        '201':
+          description: User marked as quarantined
+          content:
+            application/json:
+              schema:
+                properties:
+                  statusCode:
+                    type: number
+                    description: Server status code
+                  message:
+                    type: string
+                    description: Server message response
+                example:
+                  statusCode: 201
+                  message: 'Mobile user marked as quarantined'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+
+  /quarantined/{mobileUserId}:
+    get:
+      summary: Quarantined check
+      description: Checks if the user is quarantined
+      tags:
+        - api
+      operationId: getQuarantinedStatus
+      parameters:
+        - in: path
+          name: mobileUserId
+          schema:
+            type: string
+          required: true
+          description: Mongo unique user identifer
+      responses:
+        '200':
+          description: Quarantined user status
+          content:
+            application/json:
+              schema:
+                properties:
+                  isQuarantined:
+                    type: boolean
+                    description: Quarantined user status
+                example:
+                  isQuarantined: true
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+
+  /lab-analysis:
+    post:
+      summary: Laboratory analysis register
+      description: Register a laboratory analysis result
+      tags:
+        - api
+      operationId: createLabAnalysis
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabAnalysisRequest'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LabAnalysisResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+    get:
+      summary: All laboratory analysis
+      description: Retrieves all laboratory analysis
+      tags:
+        - api
+      operationId: getAllLaboratoryAnalysis
+      responses:
+        '200':
+          description: All laboratory analysis
+          content:
+            application/json:
+              schema:
+                properties:
+                  lab-analysis:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LabAnalysisResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+
+  /store:
+    post:
+      summary: Store register
+      description: Register a new store
+      tags:
+        - api
+      operationId: createStore
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreRequest'
+      responses:
+        '201':
+          description: Store created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+    get:
+      summary: All stores
+      description: Retrieves all stores
+      tags:
+        - api
+      operationId: getAllStores
+      responses:
+        '200':
+          description: All stores
+          content:
+            application/json:
+              schema:
+                properties:
+                  stores:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/StoreResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+
+  /store-access/{userId}/{qrText}:
+    get:
+      summary: Store access
+      description: Checks if one user can access to store
+      tags:
+        - api
+      operationId: getStoreAccess
+      parameters:
+        - in: path
+          name: userId
+          schema:
+            type: string
+          required: true
+          description: Mongo unique user identifer
+        - in: path
+          name: qrText
+          schema:
+            type: string
+          required: true
+          description: MD5 store access code
+      responses:
+        '200':
+          description: User store access
+          content:
+            application/json:
+              schema:
+                properties:
+                  canAccess:
+                    type: boolean
+                    description: Store access status
+                example:
+                  canAccess: true
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+
+  /quiz:
+    post:
+      summary: Quiz register
+      description: Register a new quiz
+      tags:
+        - api
+      operationId: createQuiz
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuizRequest'
+      responses:
+        '201':
+          description: Quiz created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuizResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+    get:
+      summary: All quizzes
+      description: Retrieves all quizzes
+      tags:
+        - api
+      operationId: getAllQuizzes
+      responses:
+        '200':
+          description: All quizzes
+          content:
+            application/json:
+              schema:
+                properties:
+                  quizzes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/QuizResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+
+  /bluetooth-data:
+    post:
+      summary: Bluetooth data
+      description: Add bluetooth data every 15 secs
+      tags:
+        - api
+      operationId: addBluetoothData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BluetoothDataRequest'
+      responses:
+        '201':
+          description: Bluetooth data added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BluetoothDataResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+    get:
+      summary: All bluetooth data
+      description: Retrieves all bluetooth data
+      tags:
+        - api
+      operationId: getBluetoothData
+      responses:
+        '200':
+          description: All bluetooth data
+          content:
+            application/json:
+              schema:
+                properties:
+                  bluetooth-data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/QuizResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+
+components:
+  schemas:
+    AuthRequest:
+      $ref: 'components/Auth/AuthRequest.yaml#/AuthRequest'
+    AuthSuccessResponse:
+      $ref: 'components/Auth/AuthResponse.yaml#/SuccessResponse'
+    AuthErrorResponse:
+      $ref: 'components/Auth/AuthResponse.yaml#/ErrorResponse'
+    UserRequest:
+      $ref: 'components/User/UserRequest.yaml#/UserRequest'
+    UserResponse:
+      $ref: 'components/User/UserResponse.yaml#/UserResponse'
+    MobileUserRequest:
+      $ref: 'components/MobileUser/MobileUserRequest.yaml#/MobileUserRequest'
+    MobileUserResponse:
+      $ref: 'components/MobileUser/MobileUserResponse.yaml#/MobileUserResponse'
+    QuarantinedRequest:
+      $ref: 'components/Quarantined/QuarantinedRequest.yaml#/QuarantinedRequest'
+    LabAnalysisRequest:
+      $ref: 'components/LabAnalysis/LabAnalysisRequest.yaml#/LabAnalysisRequest'
+    LabAnalysisResponse:
+      $ref: 'components/LabAnalysis/LabAnalysisResponse.yaml#/LabAnalysisResponse'
+    StoreRequest:
+      $ref: 'components/Store/StoreRequest.yaml#/StoreRequest'
+    StoreResponse:
+      $ref: 'components/Store/StoreResponse.yaml#/StoreResponse'
+    QuizRequest:
+      $ref: 'components/Quiz/QuizRequest.yaml#/QuizRequest'
+    QuizResponse:
+      $ref: 'components/Quiz/QuizResponse.yaml#/QuizResponse'
+    BluetoothDataRequest:
+      $ref: 'components/BluetoothData/BluetoothDataRequest.yaml#/BluetoothDataRequest'
+    BluetoothDataResponse:
+      $ref: 'components/BluetoothData/BluetoothDataResponse.yaml#/BluetoothDataResponse'
+    DatabaseErrorResponse:
+      $ref: 'components/Error/DatabaseErrorResponse.yaml#/DatabaseErrorResponse'
+    ValidationErrorResponse:
+      $ref: 'components/Error/ValidationErrorResponse.yaml#/ValidationErrorResponse'

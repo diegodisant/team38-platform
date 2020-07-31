@@ -1,0 +1,39 @@
+SuccessResponse:
+  properties:
+    user:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Mongo unique user identifier
+        name:
+          type: string
+          description: User name
+        email:
+          type: string
+          description: User email
+        password:
+          type: string
+          description: User password
+    token:
+      type: string
+      description: 'session jwt token for one user'
+  example:
+    user:
+      _id: '21f341cf4ecd-1596004085649'
+      name: 'Robert Platz'
+      email: 'robert@domain.com'
+      password: ''
+    token: 'yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRldmVsb3BlcmRpZWdvMEBnbWFpbC5jb20iLCJneW0iOm51bGwsInVzZXJUeXBlIjowLCJpYXQiOjE1OTU5ODIyOTAsImV4cCI6MTU5NzI3ODI5MH0\.OsuCnDCbxchXSguAhRfJ81gyQrH09tKFKZPSEvPW6pA'
+
+ErrorResponse:
+  properties:
+    statusCode:
+      type: number
+      description: Server status code
+    message:
+      type: string
+      description: Error message
+  example:
+    statusCode: 403
+    message: 'Email or password invalid, try login again'

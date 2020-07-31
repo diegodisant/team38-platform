@@ -1,0 +1,19 @@
+UserResponse:
+  properties:
+    _id:
+      type: string
+      description: Mongo unique user identifier
+    name:
+      type: string
+      description: User name
+    email:
+      type: string
+      description: User email
+    password:
+      type: string
+      description: User password
+  example:
+    _id: '21f341cf4ecd-1596004085649'
+    email: 'user@domain.com'
+    message: 'User created successfully'
+    password: ''

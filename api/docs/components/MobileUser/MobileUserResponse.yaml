@@ -1,0 +1,27 @@
+MobileUserResponse:
+  properties:
+    _id:
+      type: string
+      description: Mongo unique identifier for mobile user
+    curp:
+      type: string
+      description: Unique population register identifier
+    birthdate:
+      type: date
+      description: Birth date
+    gender:
+      type: enum
+      description: Gender of user (M) Male or (F) Female
+    deviceUuid:
+      type: string
+      description: Unique identifer of Bluetooth interface
+    isQuarantined:
+      type: bool
+      description: Mark if user is quarantined
+  example:
+    _id: '21f341cf4ecd-1596004085649'
+    curp: 'PERN920723MJCRBR06'
+    birthdate: '23/07/1992'
+    gender: 'F'
+    deviceUuid: 'b2df4854-b219-4ab4-acaa-bbcb2d524209'
+    isQuarantined: false

@@ -1,0 +1,19 @@
+StoreResponse:
+  properties:
+    _id:
+      type: string
+      description: Mongo unique store identifier
+    name:
+      type: string
+      description: Store name
+    address:
+      type: string
+      description: Store address
+    qrText:
+      type: string
+      description: Encoded qr code value (sha1)
+  example:
+    _id: '21f341cf4ecd-1596004085649'
+    name: 'Walmart'
+    address: 'Av Clement #285 Malubu Ca United States'
+    qrText: '8ae236270992e1fbf8c6161809816fddff5e8d53'

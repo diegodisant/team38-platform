@@ -1,0 +1,19 @@
+UserRequest:
+  required:
+    - name
+    - email
+    - password
+  properties:
+    name:
+      type: string
+      description: User name
+    email:
+      type: string
+      description: User email
+    password:
+      type: string
+      description: User password
+  example:
+    name: 'Santos Robles'
+    email: 'user@domain.com'
+    password: 'super$s3cret9291Pass'

@@ -1,0 +1,14 @@
+StoreRequest:
+  required:
+    - name
+    - address
+  properties:
+    name:
+      type: string
+      description: Store name
+    address:
+      type: string
+      description: Store address
+  description:
+    name: 'Walmart'
+    address: 'Av Clement #285 Malubu Ca United States'

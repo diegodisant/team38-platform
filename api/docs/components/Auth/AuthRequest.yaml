@@ -1,0 +1,14 @@
+AuthRequest:
+  required:
+    - email
+    - password
+  properties:
+    email:
+      type: string
+      description: User email
+    password:
+      type: string
+      description: User password
+  example:
+    email: 'user@domain.com'
+    password: 'super$s3cret9291Pass'

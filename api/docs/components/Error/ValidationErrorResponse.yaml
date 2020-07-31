@@ -1,0 +1,27 @@
+ValidationErrorResponse:
+  properties:
+    statusCode:
+      type: number
+      description: Server status error
+    message:
+      type: string
+      description: Error message
+    error:
+      type: object
+      description: Error generated at runtime, showed in development mode
+  example:
+    statusCode: 406
+    message: 'Validation error password must be a string'
+    error:
+      original:
+        email: 'user@domain.com'
+        password: 2
+      details:
+        message: 'password must be a string'
+        path:
+          - password
+        type: 'string.base'
+        context:
+          label: 'password'
+          value: 2
+          key: 'password'

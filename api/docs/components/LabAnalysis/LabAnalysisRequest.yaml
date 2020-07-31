@@ -1,0 +1,19 @@
+LabAnalysisRequest:
+  required:
+    - mobileUserId
+    - labName
+    - status
+  properties:
+    mobileUserId:
+      type: string
+      description: Mongo user unique document identifier
+    labName:
+      type: string
+      description: Laboratory name where analysis were made
+    status:
+      type: boolean
+      description: Analysis result true is positive, false is negative
+  example:
+    mobileUserId: '21f341cf4ecd-1596004085649'
+    labName: 'Loean Laboratory'
+    status: true

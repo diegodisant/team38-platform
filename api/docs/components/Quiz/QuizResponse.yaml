@@ -1,0 +1,24 @@
+QuizResponse:
+  required:
+    - _id
+    - userId
+    - questionNumber
+    - answer
+  properties:
+    _id:
+      type: string
+      description: Mongo unique quiz identifier
+    mobileUserId:
+      type: string
+      description: Mongo unique user identifier
+    questionNumber:
+      type: number
+      description: Mongo unique questionId
+    answer:
+      type: string
+      description: Answer Yes or No
+  example:
+    _id: '21f341cf4ecd-1596004085660'
+    mobileUserId: '21f341cf4ecd-1596004085649'
+    questionNumber: 1
+    answer: 'Yes'
