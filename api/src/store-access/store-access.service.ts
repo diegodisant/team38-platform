@@ -44,4 +44,10 @@ export class StoreAccessService {
       canAccess: storeAccessSaved.accessed,
     }
   }
+
+  public async all(): Promise<UntypedObject> {
+    return {
+      'store-access': await StoreAccessModel.find(),
+    }
+  }
 }

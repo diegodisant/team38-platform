@@ -324,6 +324,37 @@ paths:
               schema:
                 $ref: '#/components/schemas/DatabaseErrorResponse'
 
+  /store-access:
+    get:
+      summary: All store access
+      description: Retrieves all store access
+      tags:
+        - ai
+      operationId: getAllStoreAccess
+      responses:
+        '200':
+          description: All store access
+          content:
+            application/json:
+              schema:
+                properties:
+                  store-access:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/StoreAccessResponse'
+        '406':
+          description: Schema Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+        '500':
+          description: Database error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseErrorResponse'
+
   /store-access/{mobileUserId}/{qrText}:
     get:
       summary: Store access
@@ -517,6 +548,8 @@ components:
       $ref: 'components/Store/StoreRequest.yaml#/StoreRequest'
     StoreResponse:
       $ref: 'components/Store/StoreResponse.yaml#/StoreResponse'
+    StoreAccessResponse:
+      $ref: 'components/StoreAccess/StoreAccessResponse.yaml#/StoreAccessResponse'
     QuizRequest:
       $ref: 'components/Quiz/QuizRequest.yaml#/QuizRequest'
     QuizResponse:

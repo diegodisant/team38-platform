@@ -10,4 +10,10 @@ export class StoreAccessController {
   public async access(@Param('mobileUserId') mobileUserId: string, @Param('qrText') qrText: string) {
     return this.service.access(mobileUserId, qrText);
   }
+
+  @Get()
+  @HttpCode(200)
+  public async all() {
+    return await this.service.all();
+  }
 }

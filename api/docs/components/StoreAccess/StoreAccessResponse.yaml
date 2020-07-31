@@ -1,0 +1,19 @@
+StoreAccessResponse:
+  properties:
+    _id:
+      type: string
+      description: Mongo unique identifier
+    mobileUserId:
+      type: string
+      description: Mongo mobile user unique identifier
+    storeId:
+      type: string
+      description: Mongo store unique identifier
+    accessed:
+      type: boolean
+      description: Marks if store was accessed or not true accessed, false not accessed
+  example:
+    _id: '5f2414daf881cb6d8df44f59'
+    mobileUserId: '5f2414daf881db6d8df44f59'
+    storeId: '5f2414daf881eb6d8df44f59'
+    accessed: false
