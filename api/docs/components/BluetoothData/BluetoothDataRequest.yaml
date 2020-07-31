@@ -4,7 +4,6 @@ BluetoothDataRequest:
     - deviceUuid
     - intensity
     - infected
-    - capturedAt
   properties:
     mobileUserId:
       type: string
@@ -18,11 +17,8 @@ BluetoothDataRequest:
     infected:
       type: bool
       description: Marks if user was infected at interaction moment
-    capturedAt:
-      type: datetime
-      description: Timestamp for captured moment
   example:
     mobileUserId: '21f341cf4ecd-1596004085649'
     deviceUuid: 'b2df4854-b219-4ab4-acaa-bbcb2d524209'
     intensity: -67
-    capturedAt: '2020-12-30 22:30:00'
+    infected: true

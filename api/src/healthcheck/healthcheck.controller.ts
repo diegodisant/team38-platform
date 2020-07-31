@@ -6,7 +6,7 @@ export class HealthCheckController {
   @HttpCode(200)
   public healthCheck() {
     return {
-      manifest: Date.now(),
+      status: 'ok',
     };
   }
 }

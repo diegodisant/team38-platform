@@ -7,6 +7,7 @@ import { LabAnalysisModule } from './lab-analysis/lab-analysis.module';
 import { StoreModule } from './store/store.module';
 import { StoreAccessModule } from './store-access/store-access.module';
 import { QuizModule } from './quiz/quiz.module';
+import { BluetoothModule } from './bluetooth/bluetooth.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { QuizModule } from './quiz/quiz.module';
     StoreModule,
     StoreAccessModule,
     QuizModule,
+    BluetoothModule,
   ],
 })
 export class AppModule {}

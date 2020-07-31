@@ -461,9 +461,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/DatabaseErrorResponse'
 
-  /bluetooth-data:
+  /bluetooth:
     post:
-      summary: Bluetooth data
+      summary: Bluetooth data register
       description: Add bluetooth data every 15 secs
       tags:
         - mobile
@@ -508,7 +508,7 @@ paths:
                   bluetooth-data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/QuizResponse'
+                      $ref: '#/components/schemas/BluetoothDataResponse'
         '406':
           description: Schema Validation error
           content:
