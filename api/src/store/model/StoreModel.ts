@@ -25,8 +25,6 @@ const StoreSchema: Schema = new Schema(
     // @ts-ignore
     const store: IStoreModel = this;
 
-    console.log(store);
-
     const hash: string = crypto
       .createHash('sha1')
       .update(store._id + store.name)

@@ -5,8 +5,6 @@ import { AuthService } from './auth.service';
 import config from 'src/core/config/env/EnvConfiguration';
 import { Request } from 'express';
 
-console.log(config.secret);
-
 @Injectable()
 export class AuthStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly authService: AuthService) {
