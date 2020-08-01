@@ -2,7 +2,7 @@
 
 Web Platform & API for team38
 
-> Note: Please run your own mongo instance and replace MONGO_DB and MONGO_URI in api `.env` file
+> Note: Please run your own mongo instance and replace `MONGO_DB` and `MONGO_URI` in api `.env` file
 
 ## Api Setup
 
